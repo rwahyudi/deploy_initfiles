@@ -1,0 +1,33 @@
+ nethack               on
+ autodetach            on              # Standard: on
+ crlf                  off             # Standard: off
+ deflogin              off             # Standard: on
+ hardcopy_append       on              # Standard: off
+ startup_message       off             # Standard: on
+ vbell                 on
+ defscrollback         16000           # Standard: 100
+ silencewait           15              # Standard: 30
+ shell                 bash
+ activity              "activity in %n (%t) [%w:%s]~"
+ bell                  "%C -> %n%f %t activity!"
+ vbell_msg             " No bell "
+
+# ======================================================
+# Keybindings
+# ======================================================
+
+#bindkey ^? stuff ^H
+
+term screen
+#term screen-256color
+# See the colour : http://www.robmeerman.co.uk/unix/256colours
+attrcolor b ".I"
+#termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+#termcapinfo xterm "ve=\E[?25h\E[?17;0;64c"
+#termcapinfo linux "ve=\E[?25h\E[?17;0;64c"
+#termcapinfo  xterm Z0=\E[?3h:Z1=\E[?3l:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+
+caption always "%{rw}%n%f %t %{wk} | %?%-Lw%?%{wb}[%n*%f %t]%?(%u)%?%{wk}%?%+Lw%? %{wk"
+hardstatus alwayslastline "%{+b kr}host: %{kw}%H %{kg} | %c | %{ky}%Y%m%d | %{kr}(load: %l)%-0=%{kw}"
+
