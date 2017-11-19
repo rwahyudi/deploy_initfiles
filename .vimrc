@@ -1,4 +1,10 @@
 " Vim configuration file
+" +----------------------------------------------------
+" | DO NOT EDIT : CHANGES WILL BE LOSS !!
+" | Use .vimrc_local for localised customisation
+" +----------------------------------------------------
+
+
 
 " No more "vi" compatibility
 set nocompatible
@@ -74,3 +80,8 @@ set viminfo^=%
 
 " Default to paste nicely 
 set paste
+" Include local config file
+if !empty(glob("~/.vimrc_local"))
+    source ~/.vimrc_local
+endif
+
