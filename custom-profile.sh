@@ -3,6 +3,7 @@
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTSIZE="10000"
 export EDITOR="vim"
+
 # Don't clobber the history when closing multiple shells
 shopt -s histappend
 alias tml='tmux list-sessions'
@@ -63,10 +64,12 @@ systems()
 print_sum()
 {
     #[ -f /root/system-summary.sh ] && /root/system-summary.sh
-    echo " IP Address : "
-    for ip in $(hostname -I); do echo -e " - $i "; done
-    echo -e "Public IP Address : "; 
+    echo "* IP Address : "
+    for ip in $(hostname -I); do echo -e " - $ip "; done
+    echo -e "* Public IP Address : "; 
     echo -ne " - "; myip
+    echo
+    echo "-----------------------------------------------------------"
 }
 
 #############################################
