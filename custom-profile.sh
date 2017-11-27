@@ -10,7 +10,7 @@ alias tml='tmux list-sessions'
 alias tma='tmux attach-session -t'
 alias tmn='tmux new-session -s'
 alias vi='vim'
-alias myip='ifconfig.co'
+alias myip='curl ifconfig.co'
 
 ### Check /etc/ENVIRO | Default to DEV ###
 # to set status to  prod : echo "prod" >> /etc/ENVIRO
