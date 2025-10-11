@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export HISTTIMEFORMAT="%d/%m/%y %T "
-export HISTSIZE="10000"
+export HISTSIZE="100000"
 export EDITOR="vim"
 
 # Don't clobber the history when closing multiple shells
@@ -10,7 +10,7 @@ alias tml='tmux list-sessions'
 alias tma='tmux attach-session -t'
 alias tmn='tmux new-session -s'
 alias vi='vim'
-alias myip='curl ifconfig.co'
+alias myip='curl -s https://www.cloudflare.com/cdn-cgi/trace | grep ^ip= | cut -d= -f2'
 
 ### Check /etc/ENVIRO | Default to DEV ###
 # to set status to  prod : echo "prod" >> /etc/ENVIRO
