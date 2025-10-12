@@ -38,8 +38,8 @@ set scrolloff=5
 autocmd bufwritepost .vimrc source $MYVIMRC
 
 " Increase the history buffer for undo'ing mistakes
-set history=1000
-set undolevels=1000
+set history=10000
+set undolevels=10000
 
 " Ignore case when searching
 set ignorecase
