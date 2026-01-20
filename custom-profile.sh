@@ -6,11 +6,37 @@ export EDITOR="vim"
 
 # Don't clobber the history when closing multiple shells
 shopt -s histappend
+alias vi='vim'
+alias myip='curl -s https://www.cloudflare.com/cdn-cgi/trace | grep ^ip= | cut -d= -f2'
+
+
+# TMUX configuration
 alias tml='tmux list-sessions'
 alias tma='tmux attach-session -t'
 alias tmn='tmux new-session -s'
-alias vi='vim'
-alias myip='curl -s https://www.cloudflare.com/cdn-cgi/trace | grep ^ip= | cut -d= -f2'
+
+# Check if we are in TMUX session
+if [ -n "$TMUX" ]; then
+    tmux rename-window $(hostname -s)
+
+    # Custom function for SSH to change the window name to the target server
+    ssh() {
+        # The "$*" expands the arguments passed to the ssh command
+        tmux rename-window "$*"
+
+        # Execute the actual ssh command, capturing its exit code
+        command ssh "$@"
+        local ssh_exit_code=$?
+
+        # Restore the window name to 'bash' (or another default like 'local') after exit
+        tmux rename-window $(hostname -s)
+
+        # Return the exit code of the ssh command
+        return $ssh_exit_code
+    }
+fi
+
+
 
 ### Check /etc/ENVIRO | Default to DEV ###
 # to set status to  prod : echo "prod" >> /etc/ENVIRO
