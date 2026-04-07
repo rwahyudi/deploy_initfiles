@@ -9,7 +9,7 @@
 # Need bind-utils iptables ipset 
 
 # Provide list of hostnames
-ALLOWED="home.rwahyudi.com"
+ALLOWED="axis.rwahyudi.com"
 
 # ipset list name
 SET_NAME="allowed-ssh"
