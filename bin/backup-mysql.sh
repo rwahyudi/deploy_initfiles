@@ -7,7 +7,7 @@
 # 20190712 - (rwahyudi) :
 # - Use .my.cnf
 # - Send email notification when fail
-# - parallel gzip on the fly
+# - parallel zstd on the fly (requires zstd)
 # - fit it mariadb 10+
 
 BACKUPDIR="/home/.backup/mysql"
@@ -33,7 +33,7 @@ find $BACKUPDIR/ -type f -mtime +2 -exec rm -f {} \;
 for DATABASE in `echo "show databases;" | mysql -B --skip-column-names |grep -v information_schema | grep -v performance_schema `
 do
         cat /dev/null > $ERROR_LOG
-    mysqldump -E --opt --events --ignore-table=mysql.event $DATABASE --log-error=$ERROR_LOG | pigz -c  > $BACKUPDIR/$DATABASE-$DATE.sql.gz
+    mysqldump -E --opt --events --ignore-table=mysql.event $DATABASE --log-error=$ERROR_LOG | zstd -T0 -c > $BACKUPDIR/$DATABASE-$DATE.sql.zst
         if [ -s $ERROR_LOG ]
         then
                 let ERR++
