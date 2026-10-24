@@ -25,7 +25,10 @@ then
         exit
 fi
 
-mkdir -p $BACKUPDIR
+if ! mkdir -p -m 700 "$BACKUPDIR" || ! chmod 700 "$BACKUPDIR"; then
+    echo "Error: cannot secure backup directory: $BACKUPDIR" >&2
+    exit 1
+fi
 
 # Remove old files
 find $BACKUPDIR/ -type f -mtime +2 -exec rm -f {} \;
